@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STUDENT NEXUS — Futuristic Student Operating System</title>
+  <meta name="description"
+    content="A futuristic student learning & career platform for engineering branches, DSA practice, interactive projects, roadmaps, and voice doubt solving. Built by Petlu Vijay.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Starfield Canvas Background -->
+  <canvas id="space-canvas"></canvas>
+
+  <!-- --- STICKY NAVIGATION BAR --- -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand">
+        <div class="logo-badge">SN</div>
+        <span>STUDENT <span class="gradient-text">NEXUS</span></span>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#branches-section" class="nav-link">Branches</a></li>
+        <li><a href="#branches-section" class="nav-link" onclick="selectFeature('subjects')">Learning</a></li>
+        <li><a href="#branches-section" class="nav-link" onclick="selectFeature('practice')">Practice</a></li>
+        <li><a href="#branches-section" class="nav-link" onclick="selectFeature('projects')">Projects</a></li>
+        <li><a href="#branches-section" class="nav-link" onclick="selectFeature('roadmap')">Career</a></li>
+        <li><a href="#branches-section" class="nav-link" onclick="selectFeature('community')">Community</a></li>
+        <li><a href="#branches-section" class="nav-link" onclick="selectFeature('experts')">Experts</a></li>
+        <li><a href="#founder-card" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-trigger-btn" onclick="openSearchModal()" title="Open Global Search (Ctrl+K or /)">
+          <span>🔍</span>
+          <span>Search...</span>
+          <span class="shortcut-badge">/</span>
+        </button>
+        <button class="icon-btn" id="theme-toggle-btn" title="Toggle Dark/Light Theme">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- --- HERO & FOUNDER SECTION --- -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="card-tag" style="font-size: 0.9rem; letter-spacing: 0.1em;">STUDENT OPERATING SYSTEM</span>
+        <h1>Build Your Future.<br><span class="gradient-text">One Skill at a Time.</span></h1>
+        <p class="hero-subtitle">
+          The ultimate futuristic ecosystem for engineering students. Explore 10 detailed branch hubs, master 3-tier DSA
+          progression, solve technical doubts with native browser Voice AI, build portfolio projects, and track career
+          milestones.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#branches-section" class="btn-primary">
+            Explore Branches &rarr;
+          </a>
+          <a href="#dashboard-metrics" class="btn-secondary">
+            Daily Learning Mission
+          </a>
+        </div>
+      </div>
+
+      <!-- FOUNDER PROFILE DESIGN (EXACT UNALTERED FOUNDER IMAGE) -->
+      <div class="founder-card-wrapper" id="founder-card">
+        <div class="founder-wave-ring"></div>
+        <div class="founder-wave-ring-outer"></div>
+
+        <div class="founder-img-frame">
+          <img src="assets/images/founder.jpg" alt="Petlu Vijay - Founder" class="founder-img">
+        </div>
+
+        <div class="founder-meta">
+          <h3 class="founder-name">Petlu Vijay</h3>
+          <div class="founder-title">Founder &amp; Architect</div>
+        </div>
+
+        <!-- Floating Ecosystem Badges -->
+        <div class="floating-badge badge-1">📖 Learn</div>
+        <div class="floating-badge badge-2">⚡ Practice</div>
+        <div class="floating-badge badge-3">🛠️ Build</div>
+        <div class="floating-badge badge-4">🌱 Grow</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- DASHBOARD METRICS & DAILY MISSION WIDGETS --- -->
+  <section class="container" id="dashboard-metrics">
+    <div class="dashboard-metrics-grid">
+      <!-- Learning Progress Widget -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Learning Progress</span>
+          <span class="metric-icon">📈</span>
+        </div>
+        <div class="metric-value" id="progress-percent-text">0%</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Completed Topics Widget -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Completed Topics</span>
+          <span class="metric-icon">🎯</span>
+        </div>
+        <div class="metric-value" id="completed-topics-count">0 Topics</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px;">Saved to LocalStorage</div>
+      </div>
+
+      <!-- Daily Learning Mission Widget -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Daily Learning Mission</span>
+          <span class="metric-icon">🚀</span>
+        </div>
+        <ul class="mission-checklist">
+          <li class="mission-item">
+            <input type="checkbox" id="m1">
+            <label for="m1">Solve 2 DSA Problems</label>
+          </li>
+          <li class="mission-item">
+            <input type="checkbox" id="m2">
+            <label for="m2">Watch NPTEL Video Lecture</label>
+          </li>
+          <li class="mission-item">
+            <input type="checkbox" id="m3">
+            <label for="m3">Ask Voice Doubt Assistant</label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Recent Activity Widget -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Current Roadmap</span>
+          <span class="metric-icon">🗺️</span>
+        </div>
+        <div class="metric-value" style="font-size: 1.25rem;">Software Engineer</div>
+        <div style="font-size: 0.85rem; color: var(--text-cyan); margin-top: 6px;">Level 2 Active &bull; Tier 2</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- MAIN DASHBOARD LAYOUT (BRANCHES SIDEBAR + CONTENT AREA) --- -->
+  <section class="container dashboard-layout" id="branches-section">
+    <!-- SIDE PANEL / SIDEBAR -->
+    <aside class="branches-sidebar">
+      <div class="sidebar-title">
+        <span>Branches</span>
+        <span class="shortcut-badge">10 Total</span>
+      </div>
+      <ul class="branch-nav-list" id="branches-nav-list">
+        <!-- Rendered dynamically by script.js -->
+      </ul>
+    </aside>
+
+    <!-- BRANCH DASHBOARD CONTAINER -->
+    <main class="branch-dashboard-container" id="branch-dashboard-container">
+      <!-- Rendered dynamically by script.js -->
+    </main>
+  </section>
+
+  <!-- --- GLOBAL SEARCH OVERLAY MODAL --- -->
+  <div class="search-modal-overlay" id="search-modal-overlay" onclick="if(event.target === this) closeSearchModal()">
+    <div class="search-modal-box">
+      <div class="search-modal-header">
+        <span>🔍</span>
+        <input type="text" class="search-modal-input" id="global-search-input"
+          placeholder="Search subjects, branches, skills, projects, books, roadmaps...">
+        <button class="icon-btn" onclick="closeSearchModal()" title="Close (Esc)">✕</button>
+      </div>
+      <ul class="search-results-list" id="search-results-list">
+        <!-- Filtered results rendered dynamically by script.js -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- --- FOOTER --- -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-brand">
+          <div class="logo-badge">SN</div>
+          <span>STUDENT <span class="gradient-text">NEXUS</span></span>
+        </a>
+        <p>A futuristic Student Operating System empowering engineering students through interactive branch ecosystems,
+          DSA practice, and AI voice tools.</p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Verified Platforms</h4>
+        <ul>
+          <li><a href="https://leetcode.com" target="_blank" rel="noopener">LeetCode</a></li>
+          <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://nptel.ac.in" target="_blank" rel="noopener">NPTEL</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Engineering Branches</h4>
+        <ul>
+          <li><a href="#branches-section" onclick="selectBranch('cse')">CSE</a></li>
+          <li><a href="#branches-section" onclick="selectBranch('aids')">AI &amp; Data Science</a></li>
+          <li><a href="#branches-section" onclick="selectBranch('it')">Information Tech</a></li>
+          <li><a href="#branches-section" onclick="selectBranch('ece')">ECE &amp; EEE</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Founder</h4>
+        <ul>
+          <li><a href="#founder-card">Petlu Vijay</a></li>
+          <li><a href="#hero">Founder Profile</a></li>
+          <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn Profile</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 STUDENT NEXUS. Designed &amp; Architected by <strong>Petlu Vijay</strong> (Founder). All rights
+      reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
